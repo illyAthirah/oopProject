@@ -1,16 +1,13 @@
-package AppointmentReceptionist;
-
-import ProjectOOP.Doctor;
-import ProjectOOP.Patient;
+package ProjectOOP;
 
 public class Appointment {
     private int appointmentID;
     private String date;
     private String time;
-    private String status; // e.g., Confirmed, Pending, Canceled
+    private String status;
     private String notes;
-    private Doctor doctor; // Associated Doctor
-    private Patient patient; // Associated Patient
+    private Doctor doctor;
+    private Patient patient;
 
     // Constructor
     public Appointment(int appointmentID, String date, String time, String status, String notes, Doctor doctor, Patient patient) {
@@ -80,14 +77,15 @@ public class Appointment {
         this.patient = patient;
     }
 
-    // Display Appointment Details
+    // Display appointment details
     public void displayAppointment() {
         System.out.println("Appointment ID: " + appointmentID);
         System.out.println("Date: " + date);
         System.out.println("Time: " + time);
         System.out.println("Status: " + status);
         System.out.println("Notes: " + notes);
-        System.out.println("Doctor: " + doctor.getName());
-        System.out.println("Patient: " + patient.getName());
+        System.out.println("Doctor: " + doctor.getName() + " (" + doctor.getSpecialty() + ")");
+        System.out.println("Patient: " + patient.getName() + " (" + patient.getAge() + " years old)");
     }
 }
+
