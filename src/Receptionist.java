@@ -1,4 +1,4 @@
-package AppointmentReceptionist;
+package ProjectOOP;
 import java.util.ArrayList;
 import java.util.List;
 
