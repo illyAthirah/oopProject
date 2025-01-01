@@ -1,4 +1,4 @@
-package OutpatientSystem;
+
 
 import java.util.Scanner;
 import java.util.Date;

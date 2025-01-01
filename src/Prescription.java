@@ -1,4 +1,4 @@
-public public class Prescription {
+public class Prescription {
     private int prescriptionID;
     private Patient patient;
     private Doctor doctor;

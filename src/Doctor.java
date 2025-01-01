@@ -1,5 +1,4 @@
 
-package doctor;
 
 import java.util.Scanner;
 
