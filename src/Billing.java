@@ -22,7 +22,7 @@ public class Billing {
         System.out.println("Billing ID: " + billingID);
         System.out.println("Amount: " + amount);
         System.out.println("Status: " + status);
-        appointment.displayAppointment();
+        appointment.displayAppointment(); // Call the displayAppointment() method
         if (payment != null) {
             System.out.println("\nPayment Information:");
             payment.displayPaymentDetails();

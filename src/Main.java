@@ -1,51 +1,70 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Prescription> prescriptions = new ArrayList<>();
+        AppointmentManager appointmentManager = new AppointmentManager();
 
-        try {
-            // Sample data entry
-            System.out.println("Enter prescription details:");
+        while (true) {
+            System.out.println("1. Add Appointment\n2. Remove Appointment\n3. Search Appointment\n4. Update Appointment\n5. Display All Appointments\n6. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
 
-            System.out.print("Prescription ID: ");
-            int prescriptionID = Integer.parseInt(scanner.nextLine());
-
-            System.out.print("Patient Name: ");
-            String patientName = scanner.nextLine();
-            Patient patient = new Patient(patientName); // Use the constructor with only name
-
-            System.out.print("Doctor Name: ");
-            String doctorName = scanner.nextLine();
-            Doctor doctor = new Doctor(0, doctorName, "", "", false); // Use the existing constructor
-
-            System.out.print("Medication: ");
-            String medication = scanner.nextLine();
-
-            System.out.print("Dosage: ");
-            String dosage = scanner.nextLine();
-
-            System.out.print("Instructions: ");
-            String instructions = scanner.nextLine();
-
-            Prescription prescription = new Prescription(prescriptionID, patient, doctor, medication, dosage, instructions);
-            prescriptions.add(prescription);
-
-            // Display all prescriptions
-            for (Prescription pres : prescriptions) {
-                pres.displayPrescription();
-                System.out.println();
+            switch (choice) {
+                case 1:
+                    // Add Appointment
+                    System.out.print("Enter Appointment ID: ");
+                    int appointmentID = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Date: ");
+                    String date = scanner.nextLine();
+                    System.out.print("Enter Time: ");
+                    String time = scanner.nextLine();
+                    System.out.print("Enter Status: ");
+                    String status = scanner.nextLine();
+                    System.out.print("Enter Notes: ");
+                    String notes = scanner.nextLine();
+                    System.out.print("Enter Doctor Name: ");
+                    String doctorName = scanner.nextLine();
+                    Doctor doctor = new Doctor(0, doctorName, "", "", false);
+                    System.out.print("Enter Patient Name: ");
+                    String patientName = scanner.nextLine();
+                    Patient patient = new Patient(patientName);
+                    Appointment appointment = new Appointment(appointmentID, date, time, status, notes, doctor, patient);
+                    appointmentManager.addAppointment(appointment);
+                    break;
+                case 2:
+                    // Remove Appointment
+                    System.out.print("Enter Appointment ID to remove: ");
+                    int removeID = scanner.nextInt();
+                    scanner.nextLine();
+                    appointmentManager.removeAppointment(removeID);
+                    break;
+                case 3:
+                    // Search Appointment
+                    System.out.print("Enter Date to search: ");
+                    String searchDate = scanner.nextLine();
+                    appointmentManager.searchByDate(searchDate);
+                    break;
+                case 4:
+                    // Update Appointment
+                    System.out.print("Enter Appointment ID to update: ");
+                    int updateID = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter new Status: ");
+                    String newStatus = scanner.nextLine();
+                    appointmentManager.updateAppointmentStatus(updateID, newStatus);
+                    break;
+                case 5:
+                    // Display All Appointments
+                    appointmentManager.displayAllAppointments();
+                    break;
+                case 6:
+                    // Exit
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
-
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter numeric values where required.");
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        } finally {
-            scanner.close();
         }
     }
 }

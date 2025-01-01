@@ -1,45 +1,59 @@
-
-
 import java.util.ArrayList;
 
 public class AppointmentManager {
-    private ArrayList<Appointment> appointments; // List to store appointments
+    private ArrayList<Appointment> appointments;
 
-    // Constructor
     public AppointmentManager() {
         this.appointments = new ArrayList<>();
     }
 
-    // Method to add an appointment
+    // Add Appointment
     public void addAppointment(Appointment appointment) {
         appointments.add(appointment);
         System.out.println("Appointment added: ID " + appointment.getAppointmentID());
     }
 
-    // Method to display all appointments
-    public void displayAllAppointments() {
-        if (appointments.isEmpty()) {
-            System.out.println("No appointments scheduled.");
-        } else {
-            for (Appointment appointment : appointments) {
-                appointment.displayAppointment();
-                System.out.println("----------------------------");
-            }
-        }
+    // Remove Appointment
+    public void removeAppointment(int appointmentID) {
+        appointments.removeIf(appointment -> appointment.getAppointmentID() == appointmentID);
+        System.out.println("Appointment removed: ID " + appointmentID);
     }
 
-    // Method to search appointments by date
+    // Search Appointment by Date
     public void searchByDate(String date) {
         boolean found = false;
         for (Appointment appointment : appointments) {
             if (appointment.getDate().equals(date)) {
-                appointment.displayAppointment();
-                System.out.println("----------------------------");
+                System.out.println("Found Appointment: " + appointment);
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("No appointments found on " + date);
+            System.out.println("No appointments found for the date: " + date);
+        }
+    }
+
+    // Update Appointment Status
+    public void updateAppointmentStatus(int appointmentID, String newStatus) {
+        for (Appointment appointment : appointments) {
+            if (appointment.getAppointmentID() == appointmentID) {
+                appointment.setStatus(newStatus);
+                System.out.println("Updated Appointment ID " + appointmentID + " to Status: " + newStatus);
+                return;
+            }
+        }
+        System.out.println("Appointment ID " + appointmentID + " not found.");
+    }
+
+    // Display All Appointments
+    public void displayAllAppointments() {
+        if (appointments.isEmpty()) {
+            System.out.println("No appointments available.");
+            return;
+        }
+        System.out.println("All Appointments:");
+        for (Appointment appointment : appointments) {
+            System.out.println(appointment);
         }
     }
 }
