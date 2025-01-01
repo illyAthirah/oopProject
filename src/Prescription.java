@@ -24,6 +24,3 @@ public class Prescription {
         System.out.println("Instructions: " + instructions);
     }
 }
- {
-    
-}

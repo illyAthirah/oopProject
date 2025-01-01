@@ -1,69 +1,51 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Create Doctors
-        Doctor doctor1 = new Doctor(101, "Dr. Smith", "Cardiology", "012-9876543", true);
-        Doctor doctor2 = new Doctor(102, "Dr. Jane", "Neurology", "013-8765432", true);
+        Scanner scanner = new Scanner(System.in);
+        List<Prescription> prescriptions = new ArrayList<>();
 
-        // Create Patients
-        Patient patient1 = new Patient(1, "John Doe", 30, "Male", "012-3456789", "123 Street Name");
-        Patient patient2 = new Patient(2, "Alice Lee", 25, "Female", "014-4567890", "456 Avenue Name");
+        try {
+            // Sample data entry
+            System.out.println("Enter prescription details:");
 
-        // Create an Appointment Manager
-        AppointmentManager appointmentManager = new AppointmentManager();
+            System.out.print("Prescription ID: ");
+            int prescriptionID = Integer.parseInt(scanner.nextLine());
 
-        // Schedule Appointments
-        Appointment appointment1 = new Appointment(1, "2024-12-01", "10:00", "Confirmed", "Routine Checkup", doctor1, patient1);
-        Appointment appointment2 = new Appointment(2, "2024-12-02", "14:00", "Confirmed", "Consultation", doctor2, patient2);
+            System.out.print("Patient Name: ");
+            String patientName = scanner.nextLine();
+            Patient patient = new Patient(patientName); // Use the constructor with only name
 
-        // Add appointments to manager
-        appointmentManager.addAppointment(appointment1);
-        appointmentManager.addAppointment(appointment2);
+            System.out.print("Doctor Name: ");
+            String doctorName = scanner.nextLine();
+            Doctor doctor = new Doctor(0, doctorName, "", "", false); // Use the existing constructor
 
-        // Create Medical Records
-        MedicalRecord record1 = new MedicalRecord(1, "Hypertension diagnosis", "Take prescribed medication", patient1);
-        MedicalRecord record2 = new MedicalRecord(2, "Migraine treatment", "Rest and avoid triggers", patient2);
+            System.out.print("Medication: ");
+            String medication = scanner.nextLine();
 
-        // Create Billing
-        Billing bill1 = new Billing(1, appointment1, 200.00, "Paid");
-        Billing bill2 = new Billing(2, appointment2, 150.00, "Pending");
+            System.out.print("Dosage: ");
+            String dosage = scanner.nextLine();
 
-        // Create Prescriptions
-        Prescription prescription1 = new Prescription(1, patient1, doctor1, "Aspirin", "100 mg, Once daily", "Take after meals for 2 weeks");
-        Prescription prescription2 = new Prescription(2, patient2, doctor2, "Ibuprofen", "200 mg, Twice daily", "Take with water for 5 days");
+            System.out.print("Instructions: ");
+            String instructions = scanner.nextLine();
 
-        // Display information
-        System.out.println("\n=== Patient Information ===");
-        patient1.displayInfo();
-        patient2.displayInfo();
+            Prescription prescription = new Prescription(prescriptionID, patient, doctor, medication, dosage, instructions);
+            prescriptions.add(prescription);
 
-        System.out.println("\n=== Doctor Information ===");
-        doctor1.displayInfo();
-        doctor2.displayInfo();
+            // Display all prescriptions
+            for (Prescription pres : prescriptions) {
+                pres.displayPrescription();
+                System.out.println();
+            }
 
-        System.out.println("\n=== Appointments ===");
-        appointmentManager.displayAllAppointments();
-
-        System.out.println("\n=== Medical Records ===");
-        record1.displayRecord();
-        record2.displayRecord();
-
-        System.out.println("\n=== Billing Information ===");
-        bill1.displayBill();
-        bill2.displayBill();
-
-        System.out.println("\n=== Prescriptions ===");
-        prescription1.displayPrescription();
-        prescription2.displayPrescription();
-
-        // Search appointments by date
-        System.out.println("\n=== Search Appointments on 2024-12-01 ===");
-        appointmentManager.searchByDate("2024-12-01");
-
-        // Update billing status
-        System.out.println("\n=== Update Billing for Appointment 2 ===");
-        bill2.setStatus("Paid");
-        bill2.displayBill();
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values where required.");
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
     }
 }

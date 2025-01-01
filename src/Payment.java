@@ -19,6 +19,16 @@ public abstract class Payment {
     public double getAmount() { return amount; }
     public Date getPaymentDate() { return paymentDate; }
     public String getPaymentType() { return paymentType; }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentID=" + paymentID +
+                ", amount=" + amount +
+                ", paymentDate=" + paymentDate +
+                ", paymentType='" + paymentType + '\'' +
+                '}';
+    }
 }
 
 class CreditCardPayment extends Payment {
@@ -36,5 +46,16 @@ class CreditCardPayment extends Payment {
         System.out.println("Payment Date: " + paymentDate);
         System.out.println("Payment Type: " + paymentType);
         System.out.println("Card Number: " + cardNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "CreditCardPayment{" +
+                "paymentID=" + paymentID +
+                ", amount=" + amount +
+                ", paymentDate=" + paymentDate +
+                ", paymentType='" + paymentType + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                '}';
     }
 }
