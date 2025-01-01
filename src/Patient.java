@@ -231,7 +231,7 @@ class PatientManagementSystem {
     }
 }
 
-public class Main {
+public class Patient {
     public static void main(String[] args) {
         PatientManagementSystem system = new PatientManagementSystem();
         Scanner scanner = new Scanner(System.in);

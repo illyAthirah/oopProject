@@ -29,6 +29,10 @@ public class Main {
         Billing bill1 = new Billing(1, appointment1, 200.00, "Paid");
         Billing bill2 = new Billing(2, appointment2, 150.00, "Pending");
 
+        // Create Prescriptions
+        Prescription prescription1 = new Prescription(1, patient1, doctor1, "Aspirin", "100 mg, Once daily", "Take after meals for 2 weeks");
+        Prescription prescription2 = new Prescription(2, patient2, doctor2, "Ibuprofen", "200 mg, Twice daily", "Take with water for 5 days");
+
         // Display information
         System.out.println("\n=== Patient Information ===");
         patient1.displayInfo();
@@ -48,6 +52,10 @@ public class Main {
         System.out.println("\n=== Billing Information ===");
         bill1.displayBill();
         bill2.displayBill();
+
+        System.out.println("\n=== Prescriptions ===");
+        prescription1.displayPrescription();
+        prescription2.displayPrescription();
 
         // Search appointments by date
         System.out.println("\n=== Search Appointments on 2024-12-01 ===");
