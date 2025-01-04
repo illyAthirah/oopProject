@@ -32,4 +32,24 @@ public class Billing {
     // Getters and setters
     public double getAmount() { return amount; }
     public String getStatus() { return status; }
+
+    public int getBillingID() {
+        return billingID;
+    }
+
+    public void setBillingID(int billingID) {
+        this.billingID = billingID;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 }

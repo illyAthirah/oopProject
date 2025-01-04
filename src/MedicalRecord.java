@@ -13,8 +13,6 @@ public class MedicalRecord {
     private Date consultationDate;
     private String notes;
 
-    // In-memory storage for records (replacing the database)
-    private static Map<Integer, MedicalRecord> recordsDB = new HashMap<>();
 
     // Constructor
     public MedicalRecord(int recordID, String diagnosis, String treatment, Date consultationDate, String notes) {
@@ -66,22 +64,8 @@ public class MedicalRecord {
         this.notes = notes;
     }
 
-    // Method to save record in memory
-    public void saveToDatabase() {
-        recordsDB.put(recordID, this);
-        System.out.println("Record saved successfully in memory.");
-    }
+   
 
-    // Method to fetch a record from memory
-    public static MedicalRecord fetchFromDatabase(int id) {
-        return recordsDB.get(id);
-    }
-
-    // Method to update a record in memory
-    public void updateInDatabase() {
-        recordsDB.put(recordID, this);
-        System.out.println("Record updated successfully in memory.");
-    }
 
     // Method to display record details
     public void display() {
@@ -109,7 +93,7 @@ public class MedicalRecord {
         String notes = scanner.nextLine();
 
         MedicalRecord newRecord = new MedicalRecord(recordID, diagnosis, treatment, new Date(), notes);
-        newRecord.saveToDatabase();
+    
 
         // Example: Fetching a record from memory
         System.out.print("Enter Record ID to edit: ");
