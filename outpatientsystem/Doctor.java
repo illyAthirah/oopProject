@@ -1,24 +1,23 @@
-public class Doctor {
-    int doctorID;
-    String name;
-    String specialty;
-    String contactInfo;
-    boolean availability;
+// Doctor.java
+public class Doctor extends Person {
+    private String specialty;
+    private boolean availability;
 
-    public String getContactInfo() {
-        return contactInfo;
-    }
-
-    Doctor(int id, String name, String specialty, String contact, boolean available) {
-        this.doctorID = id;
-        this.name = name;
+    public Doctor(int id, String name, String contactInfo) {
+        super(id, name, contactInfo);
         this.specialty = specialty;
-        this.contactInfo = contact;
-        this.availability = available;
+        this.availability = availability;
     }
+
+    // Getters and Setters
+    public String getSpecialty() { return specialty; }
+    public void setSpecialty(String specialty) { this.specialty = specialty; }
+
+    public boolean isAvailable() { return availability; }
+    public void setAvailability(boolean availability) { this.availability = availability; }
 
     @Override
     public String toString() {
-        return "Doctor ID: " + doctorID + ", Name: " + name + ", Specialty: " + specialty + ", Available: " + availability;
+        return "Doctor: " + super.toString() + ", Specialty: " + specialty + ", Available: " + availability;
     }
 }

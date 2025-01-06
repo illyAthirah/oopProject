@@ -1,23 +1,39 @@
-import java.util.Date;
+// Prescription.java
+import java.util.List;
 
 public class Prescription {
-    int prescriptionID;
-    Date date;
-    int patientID;
-    String medicineID;
-    String dosage;
+    private int prescriptionID;
+    private int patientID;
+    private int doctorID;
+    private List<String> medications;
+    private String dateIssued;
 
-    Prescription(int id, String date2, String medicineID, String dosage, int patientID, int patientID1) {
-        this.prescriptionID = id;
-        this.date = date;
+    public Prescription(int prescriptionID, int patientID, int doctorID, List<String> medications, String dateIssued) {
+        this.prescriptionID = prescriptionID;
         this.patientID = patientID;
-        this.medicineID = medicineID;
-        this.dosage = dosage;
+        this.doctorID = doctorID;
+        this.medications = medications;
+        this.dateIssued = dateIssued;
     }
+
+    // Getters and Setters
+    public int getPrescriptionID() { return prescriptionID; }
+    public void setPrescriptionID(int prescriptionID) { this.prescriptionID = prescriptionID; }
+
+    public int getPatientID() { return patientID; }
+    public void setPatientID(int patientID) { this.patientID = patientID; }
+
+    public int getDoctorID() { return doctorID; }
+    public void setDoctorID(int doctorID) { this.doctorID = doctorID; }
+
+    public List<String> getMedications() { return medications; }
+    public void setMedications(List<String> medications) { this.medications = medications; }
+
+    public String getDateIssued() { return dateIssued; }
+    public void setDateIssued(String dateIssued) { this.dateIssued = dateIssued; }
 
     @Override
     public String toString() {
-        return "Prescription ID: " + prescriptionID + ", Date: " + new Date(date.getTime()) + ", Patient ID: " + patientID + ", Medicine ID: " + medicineID + ", Dosage: " + dosage;
+        return "Prescription ID: " + prescriptionID + ", Patient ID: " + patientID + ", Doctor ID: " + doctorID + ", Medications: " + medications + ", Date Issued: " + dateIssued;
     }
-
 }

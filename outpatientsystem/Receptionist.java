@@ -1,17 +1,11 @@
-// Receptionist class
-public class Receptionist {
-    int receptionistID;
-    String name;
-    String contactInfo;
-
-    Receptionist(int id, String name, String contact) {
-        this.receptionistID = id;
-        this.name = name;
-        this.contactInfo = contact;
+// Receptionist.java
+public class Receptionist extends Person {
+    public Receptionist(int id, String name, String contactInfo) {
+        super(id, name, contactInfo);
     }
 
     @Override
     public String toString() {
-        return "Receptionist ID: " + receptionistID + ", Name: " + name + ", Contact: " + contactInfo;
+        return "Receptionist: " + super.toString();
     }
 }
